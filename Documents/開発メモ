@@ -49,3 +49,19 @@ git remote add origin https://github.com/<your-username>/paytrack-mini.git
 git add .
 git commit -m "Initial Vue + Vuetify setup"
 git push -u origin main
+
+## 5. .gitignoreの追記
+# 以下の行を追加して、不要なファイルを除外
+```.gitignore
+node_modules/
+dist/
+.env
+.vscode/
+.DS_Store
+firebase-debug.log
+```
+--- 
+## 6. Licenseの確認
+- `LICENSE` ファイルを開き、MITライセンスの内容を確認
+
+---
