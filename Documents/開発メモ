@@ -1,0 +1,51 @@
+# 開発初期セットアップ
+このドキュメントは、GitHubでリポジトリを作成し、ローカル環境でVue 3 + Vuetifyベースのプロジェクトを構築するまでの手順をまとめたものです。
+
+---
+## 1. GitHubでリポジトリを作成
+
+1. GitHubにログイン
+2. 右上の「＋」→「New repository」
+3. 以下の設定で作成：
+
+| 項目 | 内容 |
+|------|------|
+| Repository name | `paytrack-mini` |
+| Description | ローン引引落し管理アプリ（就活用成果物） |
+| Visibility | Public（成果物として見せる） |
+| Initialize with README | ✅ チェック |
+| Add .gitignore | Node を選択 |
+| Add a license | MIT を選択 |
+
+---
+
+## 2. ローカルにクローン
+```bash
+cd プロジェクトフォルダ
+git clone https://github.com/<your-username>/paytrack-mini.git
+cd paytrack-mini
+```
+---
+## 3. Vue 3 + Vuetify プロジェクトのセットアップ
+```bash
+npm create vite@latest paytrack-app --template vue-ts
+# プロジェクト名：paytrack-app
+# 以下のオプションを選択：
+# - TypeScript ✅
+# - Vue Router ✅
+# - Pinia ✅
+# - Vuetify ✅
+```
+```bash
+cd paytrack-app
+npm install
+npm run dev
+```
+---
+## 4. GitHubに初回コミットとプッシュ
+```bash
+git init
+git remote add origin https://github.com/<your-username>/paytrack-mini.git
+git add .
+git commit -m "Initial Vue + Vuetify setup"
+git push -u origin main
