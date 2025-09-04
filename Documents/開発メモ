@@ -65,3 +65,95 @@ firebase-debug.log
 - `LICENSE` ファイルを開き、MITライセンスの内容を確認
 
 ---
+
+# vuetifyの導入
+以下の手順でvuetifyを導入しました。
+## 1. `vuetify v3`と`vite-plugin-vuetify`のインストール
+```bash
+npm install vuetify
+npm install vite-plugin-vuetify
+```
+## 2. Viteプラグイン`vite.config.ts`の編集
+```typescript
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vuetify from 'vite-plugin-vuetify'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    vuetify({ autoImport: true }),
+  ],
+})
+```
+
+## 3. スタイルとコンポーネントのインポート
+`main.ts`の編集。
+```typescript
+import { createApp } from 'vue'
+import App from './App.vue'
+
+// Vuetify関連のインポート
+import './styles.scss'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+// アイコンフォントのインポート
+import '@mdi/font/css/materialdesignicons.css' 
+
+// Vuetifyインスタンス作成
+const vuetify = createVuetify({
+  components,
+  directives,
+  icons: {
+    defaultSet: 'mdi',
+},
+})
+
+// VueアプリにVuetifyを適用
+createApp(App).use(vuetify).mount('#app')
+```
+vite.config.tsで`autoImport: true`を指定しているため、`components`と`directives`のインポートは不要かもしれませんが、念のため残しています。
+```typescript
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vuetify from 'vite-plugin-vuetify'
+
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    vuetify({ autoImport: true }),
+  ],
+})
+```
+
+### `src/styles.scss`の作成
+`.node_modules/vuetify/styles`が展開されなかった（再インストール等したが）ため、代替として`.node_modules/vuetify/_styles.scss`をインポート
+```scss
+@use 'vuetify/styles';
+```
+### `tsconfig.json`の編集
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "types": ["vuetify"],
+  }
+}
+---
+
+## 4. 動作確認
+`src/App.vue`に以下を追加し、Vuetifyコンポーネントが動作するか確認
+```vue
+<template>
+  <v-alert type="success" text="success vuetify alert" />
+</template>
+```
+---
