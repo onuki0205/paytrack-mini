@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.42.0",
+    "@typescript-eslint/parser": "^8.42.0",
+    "eslint": "^9.34.0",
+    "eslint-plugin-vue": "^10.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.4",
+    "vue-eslint-parser": "^10.2.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "npm run dev --prefix ./paytrack-app",
+    "build": "npm run build --prefix ./paytrack-app",
+    "preview": "npm run preview --prefix ./paytrack-app",
+    "lint": "eslint . --ext .ts,.vue"
+  }
+}
