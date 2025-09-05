@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from './router'
 
 // Vuetify関連のインポート
 import './styles.scss'
@@ -20,4 +21,4 @@ const vuetify = createVuetify({
 })
 
 // VueアプリにVuetifyを適用
-createApp(App).use(vuetify).mount('#app')
+createApp(App).use(router).use(vuetify).mount('#app')

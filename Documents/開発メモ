@@ -157,3 +157,14 @@ export default defineConfig({
 </template>
 ```
 ---
+
+# 次にやること
+設計思想の反映
+- 🎨 Vuetifyのテーマカスタマイズ
+Sass変数でブランドカラーやフォントを定義して、Figmaと同期。
+- 🧩 UIコンポーネントの設計ルール化
+再利用可能な BaseButton, BaseCard などを作って、UIの一貫性を担保。
+- 📦 GitHub ActionsでCI/CDの自動化
+Lint・テスト・デプロイをPR単位で自動実行。
+- 📚 READMEやセットアップガイドの整備
+チームや後続メンバーが迷わないように、構成と思想を言語化。

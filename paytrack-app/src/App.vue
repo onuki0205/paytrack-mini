@@ -13,6 +13,9 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <v-app>
+      <router-view />
+  </v-app>
 </template>
 
 <style scoped>
