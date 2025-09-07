@@ -1,7 +1,7 @@
 <template>
     <div class="login">
-        <h1>Login</h1>
-        <p>Welcome to the login page</p>
+        <h1>Landing Page</h1>
+        <p>Welcome to the app</p>
         <!-- Add more dashboard content here -->
     </div>
 </template>
