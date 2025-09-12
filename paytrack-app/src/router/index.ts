@@ -5,7 +5,7 @@ const DashboardView = () => import('@/views/DashboardView.vue');
 
 const routes = [
     { path: '/', name: 'Landing', component: LandingView },
-    {path: '/dashbourd', name: 'Dashbourd', component: DashboardView},
+    {path: '/dashboard', name: 'Dashboard', component: DashboardView},
 ]
 
 const router = createRouter({
