@@ -16,8 +16,9 @@
 <script setup>
 import { ref } from 'vue'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '@/firebase'
+import { auth, db } from '@/firebase'
 import { useRouter } from 'vue-router'
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
 
 const email = ref('')
 const password = ref('')
@@ -29,6 +30,13 @@ const login = async () => {
     const result = await signInWithEmailAndPassword(auth, email.value, password.value)
     const uid = result.user.uid
     alert('ログイン成功: ' + uid)
+
+    // Firestore にユーザーデータを保存
+    await setDoc(doc(db, 'users', uid), {
+      uid,
+      email: result.user.email,
+      name: result.user.displayName || 'No Name',
+    })
     
     router.push(`/dashboard/${uid}`)
   } catch (error) {

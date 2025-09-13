@@ -5,25 +5,20 @@
         <!-- Add more dashboard content here -->
         <v-container v-if="loading">読み込み中...</v-container>
         <v-container v-else-if="userData">
-            <h1 class="text-h5">ようこそ、{{ userData.name }} さん</h1>
+            <h1 class="text-h5">ようこそ、{{ userData.uid }} さん</h1>
             <p>メール: {{ userData.email }}</p>
-            <p>登録日: {{ userData.createdAt.toDate().toLocaleString() }}</p>
         </v-container>
     </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
 import { doc, getDoc } from 'firebase/firestore'
-import { db } from '@/firebase' // ← Firestoreインスタンス
-import { Timestamp } from 'firebase/firestore'
+import { db } from '@/firebase'
 
 interface UserData {
-  name: string
+  uid: string
   email: string
-  createdAt: Timestamp
 }
-
 
 const props = defineProps<{ uid: string }>()
 const uid = props.uid
@@ -42,9 +37,8 @@ onMounted(async () => {
     const data = docSnap.data()
     console.log('userData:', data)
     userData.value = {
-      name: data.name,
+      uid: data.uid,
       email: data.email,
-      createdAt: data.createdAt?.toDate?.() || new Date(),
     }
   } else {
     console.warn('ユーザーデータが存在しません')
