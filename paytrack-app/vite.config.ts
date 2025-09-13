@@ -6,7 +6,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './paytrack-mini/',
+  base: '/',
   plugins: [
     vue(),
     vuetify({ autoImport: true }),
@@ -16,7 +16,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
-    }, 
-  }
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
 })

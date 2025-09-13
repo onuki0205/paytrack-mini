@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { createPinia } from 'pinia'
+import { useAuthStore } from '@/stores/auth'
 
 // Vuetify関連のインポート
 import './styles.scss'
@@ -10,6 +12,15 @@ import * as directives from 'vuetify/directives'
 
 // アイコンフォントのインポート
 import '@mdi/font/css/materialdesignicons.css' 
+
+const app = createApp(App)
+const pinia = createPinia()
+app.use(pinia)
+app.use(router)
+
+// Authストアの初期化
+const authStore = useAuthStore()
+authStore.init()
 
 // Vuetifyインスタンス作成
 const vuetify = createVuetify({
@@ -21,4 +32,4 @@ const vuetify = createVuetify({
 })
 
 // VueアプリにVuetifyを適用
-createApp(App).use(router).use(vuetify).mount('#app')
+app.use(vuetify).mount('#app')
