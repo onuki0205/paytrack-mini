@@ -5,7 +5,7 @@
         <!-- Add more dashboard content here -->
         <v-container v-if="loading">読み込み中...</v-container>
         <v-container v-else-if="userData">
-            <h1 class="text-h5">ようこそ、{{ userData.uid }} さん</h1>
+            <h1 class="text-h5">ようこそ、{{ userData.name ?? 'ユーザー'}} さん</h1>
             <p>メール: {{ userData.email }}</p>
         </v-container>
     </div>
@@ -14,16 +14,20 @@
 import { ref, onMounted } from 'vue'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '@/firebase'
+import { useAuthStore } from '@/stores/auth'
 
 interface UserData {
   uid: string
   email: string
+  name?: string
+  createdAt?: any
+  lastLoginAt?: any
 }
 
-const props = defineProps<{ uid: string }>()
-const uid = props.uid
 const userData = ref<UserData | null>(null)
 const loading = ref(true)
+const auth = useAuthStore()
+const uid = auth.uid
 
 onMounted(async () => {
   console.log('uid:', uid)

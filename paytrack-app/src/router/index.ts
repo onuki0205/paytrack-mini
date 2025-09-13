@@ -7,11 +7,11 @@ const DashboardView = () => import('@/views/DashboardView.vue');
 const routes = [
     { path: '/', name: 'Landing', component: LandingView },
     {
-      path: '/dashboard/:uid',
+      path: '/dashboard/',
       name: 'Dashboard',
       component: DashboardView,
       meta: { requiresAuth: true },
-      props: true,
+      props: false,
     },
 
 ]

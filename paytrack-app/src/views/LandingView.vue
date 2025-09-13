@@ -36,9 +36,11 @@ const login = async () => {
       uid,
       email: result.user.email,
       name: result.user.displayName || 'No Name',
+      createdAt: serverTimestamp(),
+      lastLoginAt: serverTimestamp(),
     })
     
-    router.push(`/dashboard/${uid}`)
+    router.push(`/dashboard`)
   } catch (error) {
     alert('ログイン失敗: ' + error.message)
   }
