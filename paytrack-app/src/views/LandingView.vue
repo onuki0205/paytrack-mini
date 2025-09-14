@@ -1,14 +1,23 @@
 <template>
     <div class="dashboard">
-        <h1>Landing Page</h1>
-        <p>Welcome to the app</p>
-        <!-- Add more dashboard content here -->
-        <v-container>
-            <v-text-field v-model="email" label="Email" />
-            <v-text-field v-model="password" label="Password" type="password" />
-            <v-btn @click="login">ログイン</v-btn>
-        </v-container>
+      <h1>Landing Page</h1>
+      <p>Welcome to the app</p>
+      <!-- Add more dashboard content here -->
+      <v-container class="pa-4" style="max-width: 400px;">
+        <v-form>
+          <v-text-field v-model="email" label="Email" density="compact" hide-details variant="outlined"/>
+          <v-text-field v-model="password" label="Password" type="password" density="compact" hide-details variant="outlined"/>
 
+          <v-row class="mt-3" justify="space-between">
+            <v-col cols="6">
+              <v-btn color="primary" @click="login" block>ログイン</v-btn>
+            </v-col>
+            <v-col cols="6">
+              <v-btn color="secondary" @click="signup" block>サインアップ</v-btn>
+            </v-col>
+          </v-row>
+        </v-form>
+      </v-container>
     </div>
 </template>
 
@@ -29,8 +38,6 @@ const login = async () => {
   try {
     const result = await signInWithEmailAndPassword(auth, email.value, password.value)
     const uid = result.user.uid
-    alert('ログイン成功: ' + uid)
-
     // Firestore にユーザーデータを保存
     await setDoc(doc(db, 'users', uid), {
       uid,
@@ -42,8 +49,15 @@ const login = async () => {
     
     router.push(`/dashboard`)
   } catch (error) {
-    alert('ログイン失敗: ' + error.message)
+    alert('ログイン失敗')
   }
 }
+
+const signup = () => {
+  alert('サインアップ画面は未実装です')
+  // router.push('/signup')
+}
+
+
 </script>
 

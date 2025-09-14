@@ -1,22 +1,26 @@
-
-
 <template>
-  <v-app>
+  <v-app class="v-application light-green-bg">
+    <v-app-bar app color="primary" dark>
+      <v-toolbar-title>PayTrack Mini</v-toolbar-title>
+      
+    </v-app-bar>
+
+    <v-main>
       <router-view />
+    </v-main>
+
+    <v-footer app color="grey-lighten-1">
+      <span class="mx-auto">© 2025 PayTrack Mini</span>
+    </v-footer>
   </v-app>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.light-green-bg {
+  background-color: #e0f7e9; /* ライトグリーン系 */
+  min-height: 100vh;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.v-application {
+  background-color: #f5f5f5; /* 明るいグレー系 */
 }
 </style>
