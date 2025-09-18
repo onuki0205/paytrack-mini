@@ -24,7 +24,6 @@
         <v-col v-for="loan in loans" :key="loan.id" cols="12" sm="6" md="4">
           <v-card @click="goToLoanDetail(loan.id)" class="loan-card" hover>
             <v-card-title>{{ loan.name }}</v-card-title>
-            <v-card-subtitle>引落日: {{ formatDate(loan.dueDate) }}</v-card-subtitle>
             <v-card-text>金額: ¥{{ loan.amount.toLocaleString() }}</v-card-text>
           </v-card>
         </v-col>
@@ -50,7 +49,7 @@ interface Loan {
   id: string
   name: string
   amount: number
-  dueDate: any // Firestore Timestamp
+  paymentDay: any // Firestore Timestamp
 }
 
 const userData = ref<UserData | null>(null)
@@ -61,9 +60,9 @@ const auth = useAuthStore()
 const uid = auth.uid
 const router = useRouter()
 
-const formatDate = (timestamp: any) => {
-  return timestamp?.toDate().toLocaleDateString('ja-JP')
-}
+// const formatDate = (timestamp: any) => {
+//   return timestamp?.toDate().toLocaleDateString('ja-JP')
+// }
 
 const goToLoanDetail = (loanId: string) => {
   router.push(`/loan/${loanId}`)

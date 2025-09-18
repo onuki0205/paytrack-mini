@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/auth';
+import LoanDetailView from '@/views/LoanDetailView.vue';
 
 
 const LandingView = () => import('@/views/LandingView.vue');
@@ -13,6 +14,13 @@ const routes = [
       path: '/dashboard/',
       name: 'Dashboard',
       component: DashboardView,
+      meta: { requiresAuth: true },
+      props: false,
+    },
+    {
+      path: '/loan/:id',
+      name: 'LoanDetail',
+      component: LoanDetailView,
       meta: { requiresAuth: true },
       props: false,
     },
