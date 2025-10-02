@@ -10,16 +10,19 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "firebase": "^12.3.0",
     "vue": "^3.5.18",
     "vuetify": "^3.9.7"
   },
   "devDependencies": {
+    "@types/firebase": "^2.4.32",
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.34.0",
     "eslint-plugin-vue": "^10.4.0",
+    "includes": "0.0.7",
     "sass-embedded": "^1.92.0",
     "typescript": "~5.8.3",
     "vite": "^7.1.2",
